@@ -1,3 +1,7 @@
+# API 
+# 'tags.csv' contains the possible tags to suggest
+# 'multitag_model.pkl' is the pickled Machine Learning model 
+
 import pandas as pd
 import numpy as np
 import streamlit as st
@@ -18,14 +22,6 @@ def request_prediction(data):
 
 
 def main():
-    MLFLOW_URI = 'http://127.0.0.1:5000/invocations'
-    FLASK_URI = 'http://127.0.0.1:5000/'
-    #CORTEX_URI = 'http://0.0.0.0:8890/'
-    #RAY_SERVE_URI = 'http://127.0.0.1:8000/regressor'
-
-    #api_choice = st.sidebar.selectbox(
-    #    'Quelle API souhaitez vous utiliser',
-    #    ['MLflow', 'Cortex', 'Ray Serve'])
 
     st.title('Tag suggestion to StackOverflow questions')
 
@@ -38,7 +34,6 @@ def main():
         data = [title]
         #data=title + ' ' + body
         pred = request_prediction(data)
-        
         st.write(pred)
 
 

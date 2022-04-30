@@ -7,6 +7,7 @@ import numpy as np
 import streamlit as st
 import requests
 import joblib
+from custom_transformer import textNormalizer
      
 my_tags = pd.read_csv('tags.csv')
 tags = my_tags['0'].values

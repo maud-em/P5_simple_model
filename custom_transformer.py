@@ -1,16 +1,15 @@
 import unicodedata
-from nltk.stem import WordNetLemmatizer
-
-from sklearn.base import BaseEstimator, TransformerMixin
 import re
 import nltk
 nltk.download('stopwords')
 nltk.download('punkt')
+from nltk.stem import WordNetLemmatizer
+from sklearn.base import BaseEstimator, TransformerMixin
+
 from nltk.corpus import stopwords
 #from bs4 import BeautifulSoup
 import spacy
 nlp = spacy.load('en_core_web_sm')
-
 stop_words = stopwords.words("english")
 useless_words = ['way', 'difference', 'value', 'use', 'method', 'code', 'view', 'test', 'work', 'page',
                  'problem', 'question', 'solution', 'thanks', 'call', 'line', 'thing', 'issue',

@@ -11,13 +11,18 @@ import joblib
 my_tags = pd.read_csv('tags.csv')
 tags = my_tags['0'].values
 
+def suggest_tags(tags, sentence_vec):
+    tag_sugg = np.array(tags)[sentence_vec.astype(int)==1]
+    return tag_sugg
 
 def request_prediction(data):
-    multitag_model = open('multitag_model.pkl','rb')
+    #multitag_model = open('multitag_model.pkl','rb')
+    multitag_model = open('tfidf_model.pkl','rb')
     clf = joblib.load(multitag_model)
     my_prediction = clf.predict(data)
-    tag_bool = my_prediction.toarray()==1
-    tag_sugg = tags[tag_bool[0]]
+    #tag_bool = my_prediction.toarray()==1
+    #tag_sugg = tags[tag_bool[0]]
+    tag_sugg = suggest_tags(tags, my_prediction)
     return tag_sugg
 
 
